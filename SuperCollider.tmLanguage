@@ -19,9 +19,15 @@
   <array>
     <dict>
       <key>match</key>
-      <string>\b(arg|var|classvar|this|thisThread|thisMethod|thisFunction|thisProcess|true|false|inf|nil|if|switch)\b</string>
+      <string>\b(if||while|for|forBy|do|case|switch)\b</string>
       <key>name</key>
       <string>keyword.control.supercollider</string>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>\b(var|classvar)\b</string>
+      <key>name</key>
+      <string>keyword.var.supercollider</string>
     </dict>
     <dict>
       <key>begin</key>
@@ -29,7 +35,7 @@
       <key>end</key>
       <string>"</string>
       <key>name</key>
-      <string>string.quoted.double.supercollider</string>
+      <string>string.double.supercollider</string>
       <key>patterns</key>
       <array>
         <dict>
@@ -56,6 +62,12 @@
           <string>constant.character.escape.supercollider</string>
         </dict>
       </array>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>\$.</string>
+      <key>name</key>
+      <string>constant.character.supercollider</string>
     </dict>
     <dict>
       <key>match</key>
@@ -89,12 +101,52 @@
     </dict>
     <dict>
       <key>begin</key>
-      <string>\|</string>
+      <string>{[\s]*(\|)</string>
+      <key>beginCaptures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>variable.parameter.supercollider</string>
+        </dict>
+      </dict>
       <key>end</key>
-      <string>\|</string>
-      <key>name</key>
-      <string>variable.parameter.function.supercollider</string>
+      <string>(\|)</string>
+      <key>endCaptures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>variable.parameter.supercollider</string>
+        </dict>
+      </dict>
+      <key>contentName</key>
+      <string>variable.parameter.supercollider</string>
     </dict>
+    <dict>
+      <key>begin</key>
+      <string>{[\s]*(arg)</string>
+      <key>beginCaptures</key>
+      <dict>
+        <key>1</key>
+        <dict>
+          <key>name</key>
+          <string>variable.parameter.supercollider</string>
+        </dict>
+      </dict>
+      <key>end</key>
+      <string>;</string>
+      <key>contentName</key>
+      <string>variable.parameter.supercollider</string>
+    </dict>
+
+    <dict>
+      <key>match</key>
+      <string>!|%|&amp;|\*|\-|\+|==|=|!=|!=|&lt;=|&lt;!|&gt;=|&lt;|&gt;|!|&amp;&amp;|\|\|</string>
+      <key>name</key>
+      <string>keyword.operator.supercollider</string>
+    </dict>
+
     <dict>
       <key>captures</key>
       <dict>
@@ -107,6 +159,14 @@
       <key>match</key>
       <string>[^a-zA-Z0-9\\]([A-Z_]{1}[a-zA-Z0-9_]*)[^a-zA-Z0-9_]</string>
     </dict>
+
+    <dict>
+      <key>match</key>
+      <string>\b(|inf|nil|true|false)\b</string>
+      <key>name</key>
+      <string>constant.language.supercollider</string>
+    </dict>
+
     <dict>
       <key>match</key>
       <string>\\[a-zA-Z0-9\_]+</string>
@@ -129,6 +189,12 @@
       <key>match</key>
       <string>\~[a-zA-Z0-9_]+</string>
       <key>name</key>
+      <string>variable.other.supercollider</string>
+    </dict>
+    <dict>
+      <key>match</key>
+      <string>\b(this|thisThread|thisMethod|thisFunction|thisProcess)\b</string>
+      <key>name</key>
       <string>variable.language.supercollider</string>
     </dict>
     <dict>
@@ -147,7 +213,7 @@
     </dict>
     <dict>
       <key>comment</key>
-      <string>source: ruby bundle</string>
+      <string>Numbers</string>
       <key>match</key>
       <string>\b(0[xX]\h(?&gt;_?\h)*|\d(?&gt;_?\d)*(\.(?![^[:space:][:digit:]])(?&gt;_?\d)*)?([eE][-+]?\d(?&gt;_?\d)*)?|0[bB][01]+)\b</string>
       <key>name</key>

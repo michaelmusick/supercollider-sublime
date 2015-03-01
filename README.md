@@ -33,39 +33,25 @@ All commands are available in the Tools > SuperCollider Menu
 
 ## TODO
 
-### SuperCollider.py
-
-- command: look up references
-- command: dump node terminated
-- command: dump node tree with controls
-- command: show scope
-- command: show freqscope
-- command: show node tree
-- command: evaluate file
-- command: toggle dumpOSC
+### Release
 - SuperCollider.sublime-commands file
 - Menu: add all commands
 - Add snippets
 - decide on best keymaps
 - add user keymap
 - default keymaps for other OSs
+
+### Future
+- Provide syntax error feedback
+- command: show node tree
+- command: dump node terminated
+- command: dump node tree with controls
+- command: look up references
 - Include schelp syntax by CrucialFelix, in Geoffroy Montel repo
-- Check out Thor's package https://github.com/thormagnusson/Sublime-Supercollider
-    - Shift double click
-- Write up list of commands
-
-### Auto complete
-
-- Make easy to do ctags
-- Include default symbol list from core
-
-### Key map
-
-- Windows
-- Linux
-- OS X
-
-### Menu
+- autocomplete
+    - Make easy to do ctags
+    - Include default symbol list from core
+- mini html for error logs with felix' parsing
 
 ## Future Work
 

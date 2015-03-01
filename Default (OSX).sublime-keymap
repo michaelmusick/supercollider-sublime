@@ -37,10 +37,20 @@
             "operand":  "source.supercollider"
         }]
     },
+    {
+        "command": "super_collider_evaluate",
+        "keys":    ["ctrl+s", "ctrl+a"],
+        "args":    { "all": "True", "expand": "False" },
+        "context": [{
+            "key":      "selector",
+            "operator": "equal",
+            "operand":  "source.supercollider"
+        }]
+    },
     // post view ---------------------------------------------------------------
     {
         "command": "super_collider_open_post_view",
-        "keys":    ["ctrl+s","ctrl+p"],
+        "keys":    ["ctrl+s","ctrl+o"],
         "context": [{
             "key":      "selector",
             "operator": "equal",
@@ -121,6 +131,24 @@
         }]
     },
     {
+        "command": "super_collider_show_server_scope",
+        "keys":    ["ctrl+s", "ctrl+g"],
+        "context": [{
+            "key":      "selector",
+            "operator": "equal",
+            "operand":  "source.supercollider"
+        }]
+    },
+    {
+        "command": "super_collider_show_server_freq_scope",
+        "keys":    ["ctrl+s", "ctrl+f"],
+        "context": [{
+            "key":      "selector",
+            "operator": "equal",
+            "operand":  "source.supercollider"
+        }]
+    },
+    {
         "command": "super_collider_toggle_mute",
         "keys":    ["super+ctrl+m"],
         "context": [{
@@ -168,6 +196,26 @@
     {
         "command": "super_collider_stop_recording",
         "keys":    ["ctrl+s", "ctrl+p"],
+        "context": [{
+            "key":      "selector",
+            "operator": "equal",
+            "operand":  "source.supercollider"
+        }]
+    },
+    {
+        "command": "super_collider_evaluate",
+        "keys":    ["super+enter"],
+        "args":    { "expand": "True" },
+        "context": [{
+            "key":      "selector",
+            "operator": "equal",
+            "operand":  "source.supercollider"
+        }]
+    },
+    {
+        "command": "super_collider_toggle_trace_osc",
+        "keys":    ["ctrl+s", "ctrl+l"],
+        "args":    { "hide_status": "True" },
         "context": [{
             "key":      "selector",
             "operator": "equal",
@@ -222,7 +270,7 @@
     },
     {
         "command": "super_collider_dump_full_interface",
-        "keys":    ["ctrl+s", "ctrl+o"],
+        "keys":    ["ctrl+s", "ctrl+u"],
         "context": [{
             "key":      "selector",
             "operator": "equal",

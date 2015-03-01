@@ -22,6 +22,7 @@ def plugin_unloaded():
 
 class SuperColliderProcess():
     post_view = None
+    tracing_osc = False
 
     def __init__(self):
         self.settings = sublime.load_settings("SuperCollider.sublime-settings")
@@ -145,7 +146,8 @@ class SuperColliderProcess():
                 decoded = line.decode('utf-8')
                 if self.stdout_flag in decoded:
                     self.handle_flagged_output(decoded)
-                queue.append(decoded)
+                else:
+                    queue.append(decoded)
             input.close()
             if self.has_post_view():
                 self.deactivate_post_view(TERMINATE_MSG)
@@ -287,6 +289,7 @@ class SuperColliderProcess():
         else:
             # focus the post window if it currently open
             if self.post_view_visible():
+                sublime.status_message("Post window already open!")
                 self.post_view.window().focus_view(self.post_view)
                 if self.post_view.name() != self.inactive_post_view_name:
                     focus_window.focus_view(prev_view)
@@ -421,14 +424,16 @@ class SuperColliderEvaluateCommand(SuperColliderAliveAbstract,
         if expanded:
             self.view.run_command('expand_selection', {'to': 'line'})
 
-    def run(self, edit, expand=False):
+    def run(self, edit, expand=False, all=False):
 
         # store selection for later restoration
         prev = []
         for sel in self.view.sel():
             prev.append(sel)
 
-        if expand == 'True':
+        if all == 'True':
+            self.view.sel().add(sublime.Region(0, self.view.size()))
+        elif expand == 'True':
             self.expand_selections()
 
         for sel in self.view.sel():
@@ -462,6 +467,20 @@ class SuperColliderRecompileCommand(SuperColliderAliveAbstract,
                                     sublime_plugin.ApplicationCommand):
     def run(self):
         sc.execute('\x18')
+
+class SuperColliderToggleTraceOsc(SuperColliderAliveAbstract,
+                                  sublime_plugin.ApplicationCommand):
+    def run(self, hide_status):
+        sc.tracing_osc = not sc.tracing_osc
+        enable = "true" if sc.tracing_osc else "false"
+
+        if hide_status == 'True':
+            hide_status = 'true'
+        else:
+            hide_status = 'false'
+
+        cmd = "OSCFunc.trace(" + enable + "," + hide_status + ");"
+        sc.execute_silently(cmd);
 
 # ------------------------------------------------------------------------------
 # Post View Commands
@@ -562,6 +581,16 @@ class SuperColliderShowServerWindowCommand(SuperColliderAliveAbstract,
     def run(self):
         sc.execute("Server.default.makeWindow;")
 
+class SuperColliderShowServerScopeCommand(SuperColliderAliveAbstract,
+                                          sublime_plugin.ApplicationCommand):
+    def run(self):
+        sc.execute("Server.default.scope;")
+
+class SuperColliderShowServerFreqScopeCommand(SuperColliderAliveAbstract,
+                                             sublime_plugin.ApplicationCommand):
+    def run(self):
+        sc.execute("Server.default.freqscope;")
+
 class SuperColliderToggleMute(SuperColliderAliveAbstract,
                               sublime_plugin.ApplicationCommand):
     def run(self):
@@ -599,14 +628,15 @@ class SuperColliderRestoreVolume(SuperColliderChangeVolume):
         return super(SuperColliderRestoreVolume, self).run(new_vol)
 
 class SuperColliderStartRecording(SuperColliderAliveAbstract,
-                          sublime_plugin.ApplicationCommand):
+                                  sublime_plugin.ApplicationCommand):
     def run(self):
         sc.execute_silently("Server.default.record;")
 
 class SuperColliderStopRecording(SuperColliderAliveAbstract,
-                          sublime_plugin.ApplicationCommand):
+                                 sublime_plugin.ApplicationCommand):
     def run(self):
         sc.execute_silently("Server.default.stopRecording;")
+
 # ------------------------------------------------------------------------------
 # Open/Info Commands
 # ------------------------------------------------------------------------------
@@ -615,7 +645,7 @@ class SuperColliderSelectionOrInputAbstract(sublime_plugin.WindowCommand):
         view = self.window.active_view()
         sel = view.sel()[0]
         if sel.a != sel.b:
-            callback(view.substr(view.word(sel)))
+            callback(view.substr(sel))
         else:
             self.window.show_input_panel(caption = caption,
                                          initial_text = "",
@@ -643,8 +673,7 @@ class SuperColliderOpenStartupFileCommand(SuperColliderAliveAbstract,
 class SuperColliderHelpCommand(SuperColliderAliveAbstract,
                                SuperColliderSelectionOrInputAbstract):
     def run(self):
-        super(SuperColliderHelpCommand, self).run("Open Help for",
-                                                  sc.open_help)
+        super(SuperColliderHelpCommand, self).run("Open Help for", sc.open_help)
 
 class SuperColliderDumpInterfaceCommand(SuperColliderAliveAbstract,
                                         SuperColliderSelectionOrInputAbstract):
