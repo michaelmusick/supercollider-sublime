@@ -1,0 +1,93 @@
+[
+    {
+        "command": "super_collider_close_inactive_posts",
+        "caption": "SC: Close Inactive Post Views"
+    },
+    {
+        "caption": "SC: Help [ctrl+s, ctrl+d]",
+        "command": "super_collider_help",
+        "keys":    ["ctrl+s", "ctrl+d"],
+        "context": [{
+            "key":      "selector",
+            "operator": "equal",
+            "operand":  "source.supercollider"
+        }]
+    },
+    {
+        "caption": "SC: Dump Methods",
+        "command": "super_collider_dump_interface",
+        "keys":    ["ctrl+s", "ctrl+i"],
+        "context": [{
+            "key":      "selector",
+            "operator": "equal",
+            "operand":  "source.supercollider"
+        }]
+    },
+    {
+        "caption": "SC: Dump Full Methods",
+        "command": "super_collider_dump_full_interface",
+        "keys":    ["ctrl+s", "ctrl+o"],
+        "context": [{
+            "key":      "selector",
+            "operator": "equal",
+            "operand":  "source.supercollider"
+        }]
+    },
+    {
+        "caption": "SC: Show Server Meter",
+        "command": "super_collider_show_server_meter",
+        "keys":    ["ctrl+s", "ctrl+m"],
+        "context": [{
+            "key":      "selector",
+            "operator": "equal",
+            "operand":  "source.supercollider"
+        }]
+    },
+    {
+        "caption": "SC: Show Server Window",
+        "command": "super_collider_show_server_window",
+        "keys":    ["ctrl+s", "ctrl+w"],
+        "context": [{
+            "key":      "selector",
+            "operator": "equal",
+            "operand":  "source.supercollider"
+        }]
+    },
+    {
+        "caption": "SC: Boot Server",
+        "command": "super_collider_boot_server"
+    },
+    {
+        "caption": "SC: Reboot Server",
+        "command": "super_collider_reboot_server"
+    },
+    {
+        "caption": "SC: Recompile Class Library",
+        "command": "super_collider_recompile"
+    },
+    {
+        "caption": "SC: Start Interpreter",
+        "command": "super_collider_start_interpreter"
+    },
+    {
+        "caption": "SC: Open Post Window",
+        "command": "super_collider_open_post_view"
+    },
+    {
+        "caption": "SC: Clear Post Window",
+        "command": "super_collider_clear_post_view"
+    },
+    {
+        "caption": "SC: KILL ALL SERVERS",
+        "command": "super_collider_kill_all_servers"
+
+    },
+    {
+        "caption": "SC: Start Recording",
+        "command": "super_collider_start_recording"
+    },
+    {
+        "caption": "SC: Stop Recording",
+        "command": "super_collider_stop_recording"
+    },
+]

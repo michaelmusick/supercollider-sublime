@@ -1,0 +1,62 @@
+[
+    {
+        "id": "supercollider",
+        "caption": "SuperCollider",
+        "children":
+        [
+
+            {
+                "command": "super_collider_help",
+                "keys":    ["ctrl+s", "ctrl+d"],
+                "context": [{
+                    "key":      "selector",
+                    "operator": "equal",
+                    "operand":  "source.supercollider"
+                }],
+                "caption": "Help [ctrl+s, ctrl+d]"
+            },
+            {
+                "command": "super_collider_dump_interface",
+                "keys":    ["ctrl+s", "ctrl+i"],
+                "context": [{
+                    "key":      "selector",
+                    "operator": "equal",
+                    "operand":  "source.supercollider"
+                }],
+                "caption": "Dump Methods"
+            },
+            {
+                "command": "super_collider_dump_full_interface",
+                "keys":    ["ctrl+s", "ctrl+o"],
+                "context": [{
+                    "key":      "selector",
+                    "operator": "equal",
+                    "operand":  "source.supercollider"
+                }],
+                "caption": "Dump Full Methods"
+            },
+            {
+                "command": "super_collider_show_server_meter",
+                "keys":    ["ctrl+s", "ctrl+m"],
+                "context": [{
+                    "key":      "selector",
+                    "operator": "equal",
+                    "operand":  "source.supercollider"
+                }],
+                "caption": "Show Server Meter"
+            },
+            {
+                "command": "super_collider_show_server_window",
+                "keys":    ["ctrl+s", "ctrl+w"],
+                "context": [{
+                    "key":      "selector",
+                    "operator": "equal",
+                    "operand":  "source.supercollider"
+                }],
+                "caption": "Show Server Window"
+            }
+
+
+        ]
+    }
+]
