@@ -39,7 +39,7 @@
       <key>begin</key>
       <string>"</string>
       <key>end</key>
-      <string>("|->)</string>
+      <string>("||->)</string>
       <key>name</key>
       <string>string.double.supercollider</string>
       <key>patterns</key>
@@ -56,7 +56,7 @@
       <key>begin</key>
       <string>'</string>
       <key>end</key>
-      <string>(->|')</string>
+      <string>('||->)</string>
       <key>name</key>
       <string>constant.other.symbol.supercollider</string>
       <key>patterns</key>
