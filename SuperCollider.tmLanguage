@@ -39,7 +39,7 @@
       <key>begin</key>
       <string>"</string>
       <key>end</key>
-      <string>("||->)</string>
+      <string>["\n]</string>
       <key>name</key>
       <string>string.double.supercollider</string>
       <key>patterns</key>
@@ -56,7 +56,7 @@
       <key>begin</key>
       <string>'</string>
       <key>end</key>
-      <string>('||->)</string>
+      <string>['\n]</string>
       <key>name</key>
       <string>constant.other.symbol.supercollider</string>
       <key>patterns</key>
@@ -193,10 +193,16 @@
     </dict>
     <dict>
       <key>match</key>
-      <string>\~[a-zA-Z0-9_]+</string>
+      <string>\.[a-zA-Z0-9_]+</string>
       <key>name</key>
       <string>variable.other.supercollider</string>
     </dict>
+    <dict>
+      <key>match</key>
+      <string>\~[a-zA-Z0-9_]+</string>
+      <key>name</key>
+      <string>variable.other.supercollider</string>
+    </dict>    
     <dict>
       <key>match</key>
       <string>\b(this|thisThread|thisMethod|thisFunction|thisProcess)\b</string>
@@ -215,7 +221,7 @@
       <key>end</key>
       <string>\*\/</string>
       <key>name</key>
-      <string>comment.multiline.supercollider</string>
+      <string>comment.documentation.supercollider</string>
     </dict>
     <dict>
       <key>comment</key>
@@ -231,4 +237,17 @@
   <key>uuid</key>
   <string>F63E530D-4C84-4C66-9EAA-6FC504FA4587</string>
 </dict>
+
+<dict>
+   <key>name</key>
+   <string>Symbol List</string>
+   <key>scope</key>
+   <string>source.supercollider entity.name.function.supercollider, source.supercollider constant.other.symbol, source.supercollider variable.parameter.supercollider</string>
+   <key>settings</key>
+   <dict>
+      <key>showInSymbolList</key>
+      <integer>1</integer>
+   </dict>
+</dict>
+
 </plist>
