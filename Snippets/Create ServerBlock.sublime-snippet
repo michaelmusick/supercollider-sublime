@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[
+(
+o = Server.default.options;
+o.memSize = 2**20;
+o.numInputBusChannels  = ${1:10};
+o.numOutputBusChannels = ${2:2};
+o.device = "Avid 002 Rack";
+// o.inDevice = "Built-in Microph";
+// o.outDevice = "Built-in Output";
+s.reboot; $0
+)
+(
+s.makeWindow;
+s.meter;
+s.plotTree;
+)
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>server</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.supercollider</scope>
+</snippet>

@@ -1,16 +1,11 @@
 <snippet>
 	<content><![CDATA[
-SynthDef(\\${1:foobar}, { 
-	arg ${2:input = 0}, ${3:output = 0}$4;
-	var sig$5;
-	
-	sig = ${6:SinOsc.ar};
 
-	Out.ar( output, sig );
-}).play(s);
+/**************************************************************************/
+
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>sdef</tabTrigger>
+	<tabTrigger>commLine</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<scope>source.supercollider</scope>
 </snippet>
