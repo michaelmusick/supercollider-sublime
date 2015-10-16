@@ -1,0 +1,9 @@
+<snippet>
+	<content><![CDATA[
+SynthDef(\\${1:foobar}, {|${2:out=0}$3|
+	$0
+}).add;
+]]></content>
+	<tabTrigger>sdef</tabTrigger>
+	<scope>source.supercollider</scope>
+</snippet>
